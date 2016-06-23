@@ -1,2 +1,2 @@
-# image-processing
-remote images
+# Methods
+remote images processing

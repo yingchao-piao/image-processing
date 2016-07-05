@@ -1,48 +1,64 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-###############################################################################
 
-###############################################################################
 from methods_on_tiff import *
-from Convert import *
 import time
-
-st = time.time()
-# 获取Fpar_1km文件列表
 sharedPath = '/mnt/hgfs/Data/qhl'
-result = getRasters(sharedPath, ['Fpar_1km'])
 
-dict = {'year': [], 'month': [], 'filesname': []}
+#########################################
+# 计算每月的fpar最大值，减少云雪及其他噪声的影响
+# 输出名为2013_9_max.tiff形式的影像文件
+#########################################
 
-for i in result:
+# 获取Fpar_1km文件列表
+# fpar_files = getRasters(sharedPath, ['Fpar_1km'])
+# st = time.time()
+# max_monthly_fpar(sharedPath, fpar_files)
+# et = time.time()
+# print '计算MAX_Montly耗时：' + str(et - st) + ' s'
+
+#########################################
+# 计算DHI_CUM
+# 输出名为2013_cum.tiff形式的影像文件
+#########################################
+# st = time.time()
+# max_files = getRasters(sharedPath, ['max'])
+# max_files.sort()
+# DHI_cum(sharedPath, max_files)
+# et = time.time()
+# print '计算DHI_cum耗时：' + str(et - st) + ' s'
+
+#########################################
+# 计算DHI_MIN
+# 输出名为2013_min.tiff形式的影像文件
+#########################################
+# st = time.time()
+# max_files = getRasters(sharedPath, ['max'])
+# max_files.sort()
+# DHI_min(sharedPath, max_files)
+# et = time.time()
+# print '计算DHI_min耗时：' + str(et - st) + ' s'
+
+
+#########################################
+# 计算DHI_SEA
+# 输出名为2013_sea.tiff形式的影像文件
+#########################################
+st = time.time()
+cumfile = []
+cum = getRasters(sharedPath, ['cum'])
+for i in cum:
     if i:
-        file_date = date_of_modis(i[0])
-        if not file_date[0] in dict['year']:
-            if not dict['month'] == []:
-                period = str(dict['year'].pop()) + '_' + str(dict['month'].pop())
-                print period
-                print dict['filesname']
-                max_fpar(sharedPath, period, dict['filesname'])
-                dict['year'] = [file_date[0]]
-                dict['month'] = [file_date[1]]
-                dict['filesname'] = i
-            else:
-                dict['year'] = [file_date[0]]
-                dict['month'] = [file_date[1]]
-                dict['filesname'] = i
-        else:
-            if not file_date[1] in dict['month']:
-                period = str(dict['year'][0]) + '_' + str(dict['month'].pop())
-                print period
-                print dict['filesname']
-                max_fpar(sharedPath, period, dict['filesname'])
-                dict['month'] = [file_date[1]]
-                dict['filesname'] = i
-            else:
-                dict['filesname'].append(i[0])
+        cumfile.append(i)
+    else:
+        continue
+for k in cumfile:
+    if k:
+        for n in range(len(k)):
+            year = k[n][-13:-9]
+            DHI_sea(sharedPath, year, k[n])
     else:
         continue
 et = time.time()
-print '计算MAX_Montly耗时：' + str(et - st) + ' s'
-
+print '计算DHI_sea耗时：' + str(et - st) + ' s'

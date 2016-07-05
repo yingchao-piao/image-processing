@@ -17,100 +17,100 @@ def rejulia(theyear, theday):
 
     if leap == 0:
         if theday <= 31:
-            therealmonth = 1
+            therealmonth = '01'
             therealday = theday
 
         if theday >= 32 and theday <= 59:
-            therealmonth = 2
+            therealmonth = '02'
             therealday = theday - 31
 
         if theday >= 60 and theday <= 90:
-            therealmonth = 3
+            therealmonth = '03'
             therealday = theday - 59
 
         if theday >= 91 and theday <= 120:
-            therealmonth = 4
+            therealmonth = '04'
             therealday = theday - 90
 
         if theday >= 121 and theday <= 151:
-            therealmonth = 5
+            therealmonth = '05'
             therealday = theday - 120
 
         if theday >= 152 and theday <= 181:
-            therealmonth = 6
+            therealmonth = '06'
             therealday = theday - 151
 
         if theday >= 182 and theday <= 212:
-            therealmonth = 7
+            therealmonth = '07'
             therealday = theday - 181
 
         if theday >= 213 and theday <= 243:
-            therealmonth = 8
+            therealmonth = '08'
             therealday = theday - 212
 
         if theday >= 244 and theday <= 273:
-            therealmonth = 9
+            therealmonth = '09'
             therealday = theday - 243
 
         if theday >= 274 and theday <= 304:
-            therealmonth = 10
+            therealmonth = '10'
             therealday = theday - 274
 
         if theday >= 305 and theday <= 334:
-            therealmonth = 11
+            therealmonth = '11'
             therealday = theday - 305
 
         if theday >= 335 and theday <= 365:
-            therealmonth = 12
+            therealmonth = '12'
             therealday = theday - 334
 
     if leap == 1:
         if theday <= 31:
-            therealmonth = 1
+            therealmonth = '01'
             therealday = theday
 
         if theday >= 32 and theday <= 60:
-            therealmonth = 2
+            therealmonth = '02'
             therealday = theday - 31
 
         if theday >= 61 and theday <= 91:
-            therealmonth = 3
+            therealmonth = '03'
             therealday = theday - 60
 
         if theday >= 92 and theday <= 121:
-            therealmonth = 4
+            therealmonth = '04'
             therealday = theday - 91
 
         if theday >= 122 and theday <= 152:
-            therealmonth = 5
+            therealmonth = '05'
             therealday = theday - 121
 
         if theday >= 153 and theday <= 182:
-            therealmonth = 6
+            therealmonth = '06'
             therealday = theday - 152
 
         if theday >= 183 and theday <= 213:
-            therealmonth = 7
+            therealmonth = '07'
             therealday = theday - 182
 
         if theday >= 214 and theday <= 244:
-            therealmonth = 8
+            therealmonth = '08'
             therealday = theday - 213
 
         if theday >= 245 and theday <= 274:
-            therealmonth = 9
+            therealmonth = '09'
             therealday = theday - 244
 
         if theday >= 275 and theday <= 305:
-            therealmonth = 10
+            therealmonth = '10'
             therealday = theday - 275
 
         if theday >= 306 and theday <= 335:
-            therealmonth = 11
+            therealmonth = '11'
             therealday = theday - 306
 
         if theday >= 336 and theday <= 366:
-            therealmonth = 12
+            therealmonth = '12'
             therealday = theday - 335
 
     return theyear, therealmonth, therealday
